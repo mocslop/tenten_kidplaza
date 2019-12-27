@@ -113,8 +113,8 @@ get_header();
 						  		if($cat->category_parent == 0) {
 						  			$category_id = $cat->term_id;     
 						  			//var_dump($cat);  
-						  		    $wh_meta_desc = get_term_meta($cat->term_id, 'wh_meta_desc', true);
-									if($wh_meta_desc == false){
+						  		    $hide_cat = get_term_meta($cat->term_id, 'wh_meta_desc', true);
+									if($hide_cat == false){
 						  			?>
 						  			
 						  			<div class="item_loop_post_category_idx">
@@ -141,9 +141,13 @@ get_header();
 						  						?>
 						  						<ul class="sub_product_category">
 						  							<?php
+						  					
 						  							foreach($sub_cats as $sub_category) {
+						  								$hide_cat_sub = get_term_meta($sub_category->term_id, 'wh_meta_desc', true);
 						  								//var_dump($sub_category);
-						  								echo  '<li><a href="'.get_term_link($sub_category->slug, 'product_cat')  .'">'.$sub_category->name.' </a></li>' ;
+						  								if($hide_cat_sub == false){
+						  									echo  '<li><a href="'.get_term_link($sub_category->slug, 'product_cat')  .'">'.$sub_category->name.' </a></li>' ;
+						  								}
 						  							}?>
 						  						</ul>
 						  						<?php   
