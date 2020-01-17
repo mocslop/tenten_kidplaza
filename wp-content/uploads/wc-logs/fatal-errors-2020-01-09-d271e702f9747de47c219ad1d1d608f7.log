@@ -1,0 +1,12 @@
+2020-01-09T04:27:27+00:00 CRITICAL syntax error, unexpected ''"><a href="'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php on line 148
+
+2020-01-09T04:35:02+00:00 CRITICAL syntax error, unexpected ''cat'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php on line 186
+
+2020-01-09T04:48:54+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php:161
+Stack trace:
+#0 C:\xampp\htdocs\tenten_kidplaza\wp-includes\template-loader.php(78): include()
+#1 C:\xampp\htdocs\tenten_kidplaza\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tenten_kidplaza\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php on line 161
+

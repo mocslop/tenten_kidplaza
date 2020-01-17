@@ -135,3 +135,33 @@ function woocommerce_template_loop_product_thumbnail(){
 // Remove add to cart buttons on shop archive page in WooCommerce 
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
+
+// ADD CHECKBOX HIDE CATEGORY
+function wh_taxonomy_edit_meta_field($term) {
+
+    //getting term ID
+    $term_id = $term->term_id;
+
+    // retrieve the existing value(s) for this meta field.
+    $wh_meta_desc = get_term_meta($term_id, 'wh_meta_desc', true);
+    ?>
+    <tr class="form-field">
+        <th scope="row" valign="top"><label for="wh_meta_desc"><?php _e('Ẩn Danh Mục', 'wh'); ?></label></th>
+        <td>
+            <input type="checkbox" name="wh_meta_desc" id="wh_meta_desc" <?php if( $wh_meta_desc == true ) { ?>checked="checked"<?php } ?> /> 
+        </td>
+    </tr>
+    <?php
+}
+add_action('product_cat_edit_form_fields', 'wh_taxonomy_edit_meta_field', 10, 1);
+
+// Save
+function wh_save_taxonomy_custom_meta($term_id) {
+
+    $wh_meta_desc = filter_input(INPUT_POST, 'wh_meta_desc');
+
+    update_term_meta($term_id, 'wh_meta_desc', $wh_meta_desc);
+}
+
+add_action('edited_product_cat', 'wh_save_taxonomy_custom_meta', 10, 1);
+// END ADD CHECKBOX HIDE CATEGORY
