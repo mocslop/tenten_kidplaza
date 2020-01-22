@@ -1,0 +1,10 @@
+2020-01-21T02:58:22+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php:109
+Stack trace:
+#0 C:\xampp\htdocs\tenten_kidplaza\wp-includes\template-loader.php(78): include()
+#1 C:\xampp\htdocs\tenten_kidplaza\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tenten_kidplaza\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php on line 109
+
+2020-01-21T03:01:49+00:00 CRITICAL Object of class WP_Term could not be converted to string in C:\xampp\htdocs\tenten_kidplaza\wp-content\themes\tentenvn\page-template-trangchu.php on line 113
+

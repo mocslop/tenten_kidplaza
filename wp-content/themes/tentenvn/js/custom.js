@@ -53,6 +53,43 @@ jQuery(document).ready(function(){
 					}
 					]
 				});
+				jQuery('.list_product_category ').slick({
+				dots: true,
+				infinite: true,
+				speed: 500,
+				slidesToShow: 5,
+				slidesToScroll: 2,
+				autoplay: true,
+				dots: false,
+				autoplaySpeed: 3000,
+					// fade: true,
+					cssEase: 'linear',
+					responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+							infinite: false,
+							dots: false
+						}
+					},
+					{
+						breakpoint: 600,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1
+						}
+					}
+					]
+				});
 		// STICKY NAVBAR
 		var sticky = document.querySelector('.sticky');
 

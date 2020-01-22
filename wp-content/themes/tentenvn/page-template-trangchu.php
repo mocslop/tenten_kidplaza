@@ -110,10 +110,10 @@ get_header();
 						  <div class="loop_post_category_idx">
 						  	<?php foreach ($all_categories as $cat) { ?>
 						  		<?php   	
-						  		if($cat->category_parent == 0) {
+						  		//var_dump($cat);  
+						  		if($cat->category_parent == 0 && $cat->category_count>0) {
 						  			$category_id = $cat->term_id;     
-						  			//var_dump($cat);  
-						  			$hide_cat = get_term_meta($cat->term_id, 'wh_meta_desc', true);
+ 						  			$hide_cat = get_term_meta($cat->term_id, 'wh_meta_desc', true);
 						  			if($hide_cat == false){
 						  				?>
 
@@ -153,10 +153,9 @@ get_header();
 						  						}
 						  						?>
 						  					</div>
-						  					<div class="tab_toggle">
-						  							<?php 
+						  	  			<?php 
 						  				$args_list_product_category = array(
-						  					'posts_per_page' => 9,
+						  					'posts_per_page' => 8,
 						  					'tax_query' => array(
 						  						array(
 						  							'taxonomy' => 'product_cat',
@@ -165,49 +164,45 @@ get_header();
 						  						)
 						  					),
 						  					'post_type' => 'product',
-						  					'child_of'     => 0
+						  					'orderby' => 'title,'
 						  				);
 						  				$products = new WP_Query( $args_list_product_category );
 						  				?>
-						  						<?php foreach($sub_cats as $sub_category){  ?>
-						  							<div id="<?php echo $sub_category->term_id; ?>" class="tab-content">
-						  								<ul class="list_product_category row">
-						  									<?php 
-						  									while ( $products->have_posts() ) { $products->the_post();global $product;
-						  										?>
-						  										<li class="list_item_product col-sm-3">
-						  											<div class="product_inner">
-						  												<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $products->post->ID ), 'single-post-thumbnail' );?>
-						  												<figure class="thumbnail" style="background:url(<?php  echo $image[0]; ?>);" class="thumb_product" >
-						  													<a href="<?php echo get_permalink( $loop->post->ID ) ?>"><img src="<?php echo $image[0]; ?>"></a>
-						  													<a href="<?php echo get_permalink( $loop->post->ID ) ?>" class="detail_pd"></a>
-						  													<div class="tg_btn_acts">
-						  														<ul>
-						  															<li class="add_c"><?php woocommerce_template_loop_add_to_cart( $products->post, $product ); ?></li>
-						  														</ul>
-						  													</div>
-						  												</figure>
+						  				<ul class="list_product_category row">
 
-						  												<div class="product_meta">
-						  													<h3><a href="<?php echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>"><?php the_title(); ?></a></h3>
+						  					<?php 
+						  					while ( $products->have_posts() ) { $products->the_post();global $product;
+						  						?>
+						  						<li class="list_item_product col-sm-3">
+						  							<div class="product_inner">
+						  								<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $products->post->ID ), 'single-post-thumbnail' );?>
+						  								<figure class="thumbnail" style="background:url(<?php  echo $image[0]; ?>);" class="thumb_product" >
+						  									<a href="<?php echo get_permalink( $loop->post->ID ) ?>"><img src="<?php echo $image[0]; ?>"></a>
+						  									<a href="<?php echo get_permalink( $loop->post->ID ) ?>" class="detail_pd"></a>
+						  									<div class="tg_btn_acts">
+						  									<ul>
+						  										<li class="add_c"><?php woocommerce_template_loop_add_to_cart( $products->post, $product ); ?></li>
+						  									</ul>
+						  								</div>
+						  								</figure>
 
-						  													<div class="price">
-						  														<span>
-						  															<?php echo $product->get_price_html(); ?>
-						  														</span>      
-						  													</div>	
-						  												</div>
+						  								<div class="product_meta">
+						  									<h3><a href="<?php echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>"><?php the_title(); ?></a></h3>
 
-						  											</div>
-
-						  										</li>
-						  										<?php
-						  									}
-						  									?>
-						  								</ul>
+						  									<div class="price">
+						  										<span>
+						  											<?php echo $product->get_price_html(); ?>
+						  										</span>      
+						  									</div>	
+						  								</div>
+						  								
 						  							</div>
-						  						<?php } ?>	
-						  					</div>
+
+						  						</li>
+						  						<?php
+						  					}
+						  					?>
+						  				</ul>
 
 						  				</div>
 						  				<?php 
@@ -215,7 +210,7 @@ get_header();
 						  		} //endif
 						  	}//end foreach ?>
 						  </div>
-						  <?php echo do_shortcode('[product_category]'); ?>
+						
 
 						</div>
 
